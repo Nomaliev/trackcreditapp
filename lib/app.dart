@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: AppThemes.lightTheme,
       darkTheme: AppThemes.darkTheme,
-      home: LoginPage(),
+      home: const LoginPage(),
     );
   }
 }
