@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "691538021682",
+    "project_id": "trackcreditapp",
+    "storage_bucket": "trackcreditapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:691538021682:android:fba4ed6bac081846ac9b2b",
+        "android_client_info": {
+          "package_name": "com.trackcr"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0zu_wWCZn8RZCuRHin-IraKEtP4OwAfE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
