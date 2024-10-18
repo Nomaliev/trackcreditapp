@@ -32,7 +32,6 @@ class LoginForm extends StatelessWidget {
               value: true,
               onChanged: (value) {},
             ),
-            const SizedBox(width: AppSizes.inputSize / 2),
             Text(AppStrings.rememberMe,
                 style: Theme.of(context).textTheme.titleSmall),
             const SizedBox(width: AppSizes.sectionSpace * 2),

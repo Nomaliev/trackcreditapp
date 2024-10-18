@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:trackcreditapp/features/authentication/controllers/signup_controller.dart';
 import 'package:trackcreditapp/features/authentication/screens/loginpage/login_page.dart';
 import 'package:trackcreditapp/utilities/constans/sizes.dart';
 import 'package:trackcreditapp/utilities/constans/strings.dart';
@@ -10,6 +11,7 @@ class SignupForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(SignupController());
     return Form(
         child: Column(
       children: [
@@ -17,23 +19,35 @@ class SignupForm extends StatelessWidget {
           decoration: const InputDecoration(
               label: Text(AppStrings.email), prefixIcon: Icon(Iconsax.user)),
         ),
-        const SizedBox(
-          height: AppSizes.fieldSpace,
-        ),
-        TextFormField(
-          obscureText: true,
-          decoration: const InputDecoration(
-              label: Text(AppStrings.password),
-              prefixIcon: Icon(Iconsax.password_check),
-              suffixIcon: Icon(Iconsax.eye_slash)),
+        const SizedBox(height: AppSizes.fieldSpace),
+        Obx(
+          () => TextFormField(
+            obscureText: controller.hidePassword.value,
+            decoration: InputDecoration(
+                label: const Text(AppStrings.password),
+                prefixIcon: const Icon(Iconsax.password_check),
+                suffixIcon: IconButton(
+                    onPressed: () => controller.hidePassword.value =
+                        !controller.hidePassword.value,
+                    icon: Icon(controller.hidePassword.value
+                        ? Iconsax.eye_slash
+                        : Iconsax.eye))),
+          ),
         ),
         const SizedBox(height: AppSizes.fieldSpace),
-        TextFormField(
-          obscureText: true,
-          decoration: const InputDecoration(
-              label: Text(AppStrings.confirmPassword),
-              prefixIcon: Icon(Iconsax.password_check),
-              suffixIcon: Icon(Iconsax.eye_slash)),
+        Obx(
+          () => TextFormField(
+            obscureText: controller.hideConfirmPassword.value,
+            decoration: InputDecoration(
+                label: const Text(AppStrings.confirmPassword),
+                prefixIcon: const Icon(Iconsax.password_check),
+                suffixIcon: IconButton(
+                    onPressed: () => controller.hideConfirmPassword.value =
+                        !controller.hideConfirmPassword.value,
+                    icon: Icon(controller.hideConfirmPassword.value
+                        ? Iconsax.eye_slash
+                        : Iconsax.eye))),
+          ),
         ),
         const SizedBox(width: AppSizes.inputSize / 2),
         const SizedBox(height: AppSizes.sectionSpace),
