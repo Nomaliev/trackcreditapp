@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:trackcreditapp/features/authentication/screens/loginpage/login_page.dart';
+import 'package:trackcreditapp/features/authentication/screens/signup/widgets/signup_form.dart';
+import 'package:trackcreditapp/utilities/constans/colors.dart';
+import 'package:trackcreditapp/utilities/constans/helper_functions.dart';
 import 'package:trackcreditapp/utilities/constans/sizes.dart';
 import 'package:trackcreditapp/utilities/constans/strings.dart';
 
@@ -8,8 +13,14 @@ class SignUpPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = AppHelperFunctions.isDarkMode(context);
     return Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          leading: IconButton(
+              onPressed: () => Get.offAll(() => const LoginPage()),
+              icon: Icon(Iconsax.arrow_left_2,
+                  color: isDark ? AppColors.white : AppColors.black)),
+        ),
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(AppSizes.defaultPadding),
@@ -19,42 +30,7 @@ class SignUpPage extends StatelessWidget {
                 Text(AppStrings.signUp,
                     style: Theme.of(context).textTheme.headlineMedium),
                 const SizedBox(height: AppSizes.sectionSpace),
-                Form(
-                    child: Column(
-                  children: [
-                    TextFormField(
-                      decoration: const InputDecoration(
-                          label: Text(AppStrings.email),
-                          prefixIcon: Icon(Iconsax.user)),
-                    ),
-                    const SizedBox(
-                      height: AppSizes.fieldSpace,
-                    ),
-                    TextFormField(
-                      obscureText: true,
-                      decoration: const InputDecoration(
-                          label: Text(AppStrings.password),
-                          prefixIcon: Icon(Iconsax.password_check),
-                          suffixIcon: Icon(Iconsax.eye_slash)),
-                    ),
-                    const SizedBox(height: AppSizes.fieldSpace),
-                    TextFormField(
-                      obscureText: true,
-                      decoration: const InputDecoration(
-                          label: Text(AppStrings.confirmPassword),
-                          prefixIcon: Icon(Iconsax.password_check),
-                          suffixIcon: Icon(Iconsax.eye_slash)),
-                    ),
-                    const SizedBox(width: AppSizes.inputSize / 2),
-                    const SizedBox(height: AppSizes.sectionSpace),
-                    SizedBox(
-                      width: double.infinity,
-                      child: ElevatedButton(
-                          onPressed: () {},
-                          child: const Text(AppStrings.signUp)),
-                    ),
-                  ],
-                ))
+                const SignupForm()
               ],
             ),
           ),

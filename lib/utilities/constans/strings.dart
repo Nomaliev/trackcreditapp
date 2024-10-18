@@ -8,4 +8,5 @@ class AppStrings {
   static const String noAccount = 'Hesabınız yoxdur?';
   static const String createAccount = 'Hesab Yarat';
   static const String signUp = 'Qeydiyyatdan Keç';
+  static const String alreadyHaveAccount = 'Hesabınız var?';
 }
