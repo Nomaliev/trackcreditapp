@@ -6,7 +6,7 @@ import 'package:trackcreditapp/data/repositories/user_repository.dart';
 import 'package:trackcreditapp/features/authentication/models/user_model.dart';
 import 'package:trackcreditapp/features/authentication/screens/loginpage/login_page.dart';
 import 'package:trackcreditapp/utilities/constans/colors.dart';
-import 'package:trackcreditapp/utilities/constans/snackbars/error_snackbar.dart';
+import 'package:trackcreditapp/utilities/constans/snackbars.dart';
 
 class SignupController extends GetxController {
   static SignupController get instance => Get.find();
@@ -25,6 +25,7 @@ class SignupController extends GetxController {
           builder: (context) => const Center(
               child: CircularProgressIndicator.adaptive(
                   backgroundColor: AppColors.white)));
+
       if (!signupFormKey.currentState!.validate()) {
         Get.back();
         return;

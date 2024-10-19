@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:trackcreditapp/data/repositories/authentication_repository.dart';
+import 'package:trackcreditapp/features/authentication/screens/home.dart';
 import 'package:trackcreditapp/utilities/constans/colors.dart';
-import 'package:trackcreditapp/utilities/constans/snackbars/error_snackbar.dart';
+import 'package:trackcreditapp/utilities/constans/snackbars.dart';
 
 class LoginController extends GetxController {
   static LoginController get instance => Get.find();
@@ -24,6 +26,10 @@ class LoginController extends GetxController {
         Get.back();
         return;
       }
+
+      await AuthenticationRepository.instance
+          .loginWithEmailAndPassword(email.text.trim(), password.text.trim());
+      Get.to(() => const HomePage());
     } catch (e) {
       AppSnackbars.errorSnackBar(error: e.toString());
       Get.back();

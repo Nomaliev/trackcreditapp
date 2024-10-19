@@ -4,7 +4,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:trackcreditapp/features/authentication/screens/loginpage/login_page.dart';
 import 'package:trackcreditapp/features/authentication/screens/signup/widgets/signup_form.dart';
 import 'package:trackcreditapp/utilities/constans/colors.dart';
-import 'package:trackcreditapp/utilities/constans/helper_functions.dart';
+import 'package:trackcreditapp/utilities/constans/helpers/helper_functions.dart';
 import 'package:trackcreditapp/utilities/constans/sizes.dart';
 import 'package:trackcreditapp/utilities/constans/strings.dart';
 
