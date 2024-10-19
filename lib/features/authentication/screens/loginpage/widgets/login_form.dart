@@ -36,7 +36,7 @@ class LoginForm extends StatelessWidget {
                 style: Theme.of(context).textTheme.titleSmall),
             const SizedBox(width: AppSizes.sectionSpace * 2),
             Text(AppStrings.forgotPassword,
-                style: Theme.of(context).textTheme.bodyMedium),
+                style: Theme.of(context).textTheme.bodySmall),
           ],
         ),
         const SizedBox(height: AppSizes.sectionSpace),
