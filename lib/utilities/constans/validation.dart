@@ -11,7 +11,7 @@ class AppValidator {
 
   static String? validateEmail(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Email is required.';
+      return 'Email tələb olunur';
     }
 
     // Regular expression for email validation
@@ -26,17 +26,17 @@ class AppValidator {
 
   static String? validatePassword(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Password is required.';
+      return 'Şifrə tələb olunur';
     }
 
     // Check for minimum password length
     if (value.length < 6) {
-      return 'Password must be at least 6 characters long.';
+      return 'Şifrə ən azı 6 xarakterdən ibarət olmalıdır';
     }
 
     // Check for uppercase letters
     if (!value.contains(RegExp(r'[A-Z]'))) {
-      return 'Password must contain at least one uppercase letter.';
+      return 'Şifrə ən azı bir böyük hərf';
     }
 
     // Check for numbers
