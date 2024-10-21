@@ -6,6 +6,7 @@ import 'package:trackcreditapp/data/repositories/user_repository.dart';
 import 'package:trackcreditapp/features/authentication/models/user_model.dart';
 import 'package:trackcreditapp/features/authentication/screens/loginpage/login_page.dart';
 import 'package:trackcreditapp/utilities/constans/colors.dart';
+import 'package:trackcreditapp/utilities/constans/helpers/network_manager.dart';
 import 'package:trackcreditapp/utilities/constans/snackbars.dart';
 
 class SignupController extends GetxController {
@@ -25,6 +26,12 @@ class SignupController extends GetxController {
           builder: (context) => const Center(
               child: CircularProgressIndicator.adaptive(
                   backgroundColor: AppColors.white)));
+
+      final isConnected = await NetworkManager.instance.isConnected();
+      if (!isConnected) {
+        Get.back();
+        return;
+      }
 
       if (!signupFormKey.currentState!.validate()) {
         Get.back();

@@ -77,7 +77,7 @@ class LoginForm extends StatelessWidget {
                 const Text(AppStrings.noAccount),
                 const SizedBox(width: AppSizes.fieldSpace),
                 GestureDetector(
-                  onTap: () => Get.offAll(() => const SignUpPage()),
+                  onTap: () => Get.to(() => const SignUpPage()),
                   child: Text(AppStrings.createAccount,
                       style: Theme.of(context)
                           .textTheme

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:trackcreditapp/features/authentication/screens/loginpage/login_page.dart';
 import 'package:trackcreditapp/features/authentication/screens/signup/widgets/signup_form.dart';
 import 'package:trackcreditapp/utilities/constans/colors.dart';
 import 'package:trackcreditapp/utilities/constans/helpers/helper_functions.dart';
@@ -17,7 +16,7 @@ class SignUpPage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           leading: IconButton(
-              onPressed: () => Get.offAll(() => const LoginPage()),
+              onPressed: () => Get.back(),
               icon: Icon(Iconsax.arrow_left_2,
                   color: isDark ? AppColors.white : AppColors.black)),
         ),
