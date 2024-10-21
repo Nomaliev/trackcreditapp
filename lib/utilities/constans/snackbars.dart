@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:trackcreditapp/utilities/constans/colors.dart';
+import 'package:trackcreditapp/utilities/constans/sizes.dart';
 
 class AppSnackbars {
   static errorSnackBar({required error}) {
@@ -27,18 +28,25 @@ class AppSnackbars {
   }
 
   static warningSnackbar({required warning}) {
-    Get.snackbar(
-      warning,
-      '',
-      maxWidth: 600,
-      isDismissible: true,
-      shouldIconPulse: true,
-      colorText: AppColors.white,
+    return ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
+      content: Row(
+        children: [
+          const Icon(Iconsax.warning_2),
+          const SizedBox(width: AppSizes.fieldSpace),
+          Text(
+            warning,
+            style: Theme.of(Get.context!)
+                .textTheme
+                .bodyMedium!
+                .apply(color: AppColors.white),
+          ),
+        ],
+      ),
+      duration: const Duration(seconds: 2),
+      width: 300,
+      behavior: SnackBarBehavior.floating,
       backgroundColor: Colors.orange,
-      snackPosition: SnackPosition.BOTTOM,
-      duration: const Duration(seconds: 3),
-      margin: const EdgeInsets.all(20),
-      icon: const Icon(Iconsax.warning_2, color: AppColors.white),
-    );
+      elevation: 0,
+    ));
   }
 }

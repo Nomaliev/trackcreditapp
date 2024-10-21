@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:trackcreditapp/data/repositories/authentication_repository.dart';
 import 'package:trackcreditapp/features/authentication/screens/home.dart';
 import 'package:trackcreditapp/utilities/constans/colors.dart';
+import 'package:trackcreditapp/utilities/constans/helpers/network_manager.dart';
 import 'package:trackcreditapp/utilities/constans/snackbars.dart';
 
 class LoginController extends GetxController {
@@ -22,6 +23,12 @@ class LoginController extends GetxController {
               child: CircularProgressIndicator.adaptive(
                   backgroundColor: AppColors.white)));
 
+      final isConnected = await NetworkManager.instance.isConnected();
+      if (!isConnected) {
+        Get.back();
+        return;
+      }
+
       if (!loginFormKey.currentState!.validate()) {
         Get.back();
         return;
@@ -29,7 +36,7 @@ class LoginController extends GetxController {
 
       await AuthenticationRepository.instance
           .loginWithEmailAndPassword(email.text.trim(), password.text.trim());
-      Get.to(() => const HomePage());
+      Get.offAll(() => const HomePage());
     } catch (e) {
       AppSnackbars.errorSnackBar(error: e.toString());
       Get.back();

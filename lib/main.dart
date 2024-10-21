@@ -7,7 +7,6 @@ import 'package:trackcreditapp/firebase_options.dart';
 
 Future<void> main() async {
   runApp(const MyApp());
-
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
       .then(
     (FirebaseApp value) => Get.put(AuthenticationRepository()),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/route_manager.dart';
-import 'package:trackcreditapp/features/authentication/screens/loginpage/login_page.dart';
+import 'package:get/get.dart';
+import 'package:trackcreditapp/features/authentication/screens/home.dart';
+import 'package:trackcreditapp/utilities/general_bindings.dart';
 import 'package:trackcreditapp/utilities/theme/theme.dart';
 
 class MyApp extends StatelessWidget {
@@ -10,10 +11,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
+      initialBinding: GeneralBindings(),
       themeMode: ThemeMode.system,
       theme: AppThemes.lightTheme,
       darkTheme: AppThemes.darkTheme,
-      home: const LoginPage(),
+      home: const HomePage(),
     );
   }
 }

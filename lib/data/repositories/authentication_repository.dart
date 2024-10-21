@@ -16,7 +16,7 @@ class AuthenticationRepository extends GetxController {
     if (_auth.currentUser != null) {
       Get.offAll(() => const HomePage());
     } else {
-      Get.offAll(const LoginPage());
+      Get.offAll(() => const LoginPage());
     }
     super.onInit();
   }
@@ -44,6 +44,23 @@ class AuthenticationRepository extends GetxController {
     try {
       return await _auth.signInWithEmailAndPassword(
           email: email, password: password);
+    } on FirebaseAuthException catch (e) {
+      throw AppFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw AppFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const FormatException();
+    } on PlatformException catch (e) {
+      throw AppPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
+
+  Future<void> logOut() async {
+    try {
+      await _auth.signOut();
+      Get.offAll(() => const LoginPage());
     } on FirebaseAuthException catch (e) {
       throw AppFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {
