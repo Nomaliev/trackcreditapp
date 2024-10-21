@@ -11,6 +11,12 @@ class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
   final _auth = FirebaseAuth.instance;
 
+  @override
+  void onInit() {
+    screenRedirect();
+    super.onInit();
+  }
+
   screenRedirect() {
     if (_auth.currentUser != null) {
       Get.offAll(() => const HomePage());
