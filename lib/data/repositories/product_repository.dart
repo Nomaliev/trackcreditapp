@@ -12,6 +12,22 @@ class ProductRepository extends GetxController {
   Future<void> saveProductData(ProductModel product) async {
     try {
       CollectionReference productRef = _db.collection('Products');
+      productRef.add({'Name': product.name, 'Size': product.size});
+    } on FirebaseException catch (e) {
+      throw AppFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const FormatException();
+    } on PlatformException catch (e) {
+      throw AppPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
+
+  Future<void> fetchProductData() async {
+    try {
+      CollectionReference productRef = _db.collection('Products');
+      final documents = await _db.collection('Products').get();
     } on FirebaseException catch (e) {
       throw AppFirebaseException(e.code).message;
     } on FormatException catch (_) {

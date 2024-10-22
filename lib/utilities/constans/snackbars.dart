@@ -49,4 +49,12 @@ class AppSnackbars {
       elevation: 0,
     ));
   }
+
+  static loadingIndicator() {
+    return showDialog(
+        context: Get.context!,
+        builder: (context) => const Center(
+            child: CircularProgressIndicator.adaptive(
+                backgroundColor: AppColors.white)));
+  }
 }

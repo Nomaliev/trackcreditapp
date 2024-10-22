@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
     final isDark = AppHelperFunctions.isDarkMode(context);
     return Scaffold(
       floatingActionButton: IconButton(
-        onPressed: () => Get.to(() => const Addcredit()),
+        onPressed: () => Get.offAll(() => const Addcredit()),
         icon: Icon(
           Iconsax.add,
           color: isDark ? AppColors.white : AppColors.black,
