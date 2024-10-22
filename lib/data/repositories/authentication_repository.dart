@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:trackcreditapp/features/authentication/screens/home.dart';
+import 'package:trackcreditapp/features/task/screens/home.dart';
 import 'package:trackcreditapp/features/authentication/screens/loginpage/login_page.dart';
 import 'package:trackcreditapp/utilities/constans/exceptions/exceptions.dart';
 import 'package:trackcreditapp/utilities/constans/exceptions/firebase_exceptions.dart';

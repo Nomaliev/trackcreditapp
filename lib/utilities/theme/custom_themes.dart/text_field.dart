@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:trackcreditapp/utilities/constans/sizes.dart';
 
 class AppTextFieldTheme {
   AppTextFieldTheme._();
 
   //Light Theme
   static InputDecorationTheme lightTextFieldTheme = InputDecorationTheme(
+    contentPadding: const EdgeInsets.all(AppSizes.defaultPadding),
     errorMaxLines: 3,
     prefixIconColor: Colors.grey,
     suffixIconColor: Colors.grey,
@@ -33,6 +35,7 @@ class AppTextFieldTheme {
 
   //Dark Theme
   static InputDecorationTheme darkTextFieldTheme = InputDecorationTheme(
+    contentPadding: const EdgeInsets.all(AppSizes.defaultPadding),
     errorMaxLines: 2,
     prefixIconColor: Colors.grey,
     suffixIconColor: Colors.grey,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:trackcreditapp/features/authentication/screens/home.dart';
+import 'package:trackcreditapp/features/task/screens/home.dart';
 import 'package:trackcreditapp/utilities/general_bindings.dart';
 import 'package:trackcreditapp/utilities/theme/theme.dart';
 
