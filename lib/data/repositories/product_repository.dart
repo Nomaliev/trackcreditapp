@@ -24,10 +24,16 @@ class ProductRepository extends GetxController {
     }
   }
 
-  Future<void> fetchProductData() async {
+  Future<ProductModel> fetchProductData() async {
     try {
       CollectionReference productRef = _db.collection('Products');
-      final documents = await _db.collection('Products').get();
+      final snapshots = await productRef.doc().get();
+      if (snapshots.exists) {
+        return ProductModel.fromJson(
+            snapshots as DocumentSnapshot<Map<String, dynamic>>);
+      } else {
+        return ProductModel.empty();
+      }
     } on FirebaseException catch (e) {
       throw AppFirebaseException(e.code).message;
     } on FormatException catch (_) {
