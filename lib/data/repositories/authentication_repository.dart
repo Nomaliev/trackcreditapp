@@ -12,7 +12,6 @@ class AuthenticationRepository extends GetxController {
 
   // @override
   // void onInit() {
-  //   screenRedirect();
   //   super.onInit();
   // }
 

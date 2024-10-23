@@ -5,6 +5,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:trackcreditapp/features/task/addcredit.dart';
 import 'package:trackcreditapp/utilities/constans/colors.dart';
 import 'package:trackcreditapp/utilities/constans/helpers/helper_functions.dart';
+import 'package:trackcreditapp/utilities/constans/sizes.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -36,9 +37,21 @@ class HomePage extends StatelessWidget {
               itemCount: snapshot.data!.docs.length,
               itemBuilder: (context, index) {
                 final document = snapshot.data!.docs[index];
-                return ListTile(
-                  title: Text(document['Name']),
-                  subtitle: Text(document['Size']),
+                return Padding(
+                  padding: const EdgeInsets.all(AppSizes.fieldSpace),
+                  child: Container(
+                    padding: const EdgeInsets.all(AppSizes.fieldSpace),
+                    decoration: const BoxDecoration(
+                        color: Colors.blue,
+                        borderRadius: BorderRadius.all(Radius.circular(20))),
+                    child: Column(
+                      children: [
+                        Text(document['Name']),
+                        Text(document['Size']),
+                        Text(document['Date'])
+                      ],
+                    ),
+                  ),
                 );
               },
             );

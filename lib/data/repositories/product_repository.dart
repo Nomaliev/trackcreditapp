@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:trackcreditapp/features/task/models/product_model.dart';
 import 'package:trackcreditapp/utilities/constans/exceptions/firebase_exceptions.dart';
 import 'package:trackcreditapp/utilities/constans/exceptions/platform_exceptions.dart';
@@ -11,8 +12,13 @@ class ProductRepository extends GetxController {
 
   Future<void> saveProductData(ProductModel product) async {
     try {
+      final currentTime = DateTime.now();
       CollectionReference productRef = _db.collection('Products');
-      productRef.add({'Name': product.name, 'Size': product.size});
+      productRef.add({
+        'Name': product.name,
+        'Size': product.size,
+        'Date': DateFormat('d-MM-yyyy').format(currentTime)
+      });
     } on FirebaseException catch (e) {
       throw AppFirebaseException(e.code).message;
     } on FormatException catch (_) {
