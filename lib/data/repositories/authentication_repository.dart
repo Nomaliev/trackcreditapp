@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:trackcreditapp/features/authentication/screens/loginpage/login_page.dart';
+import 'package:trackcreditapp/features/task/screens/home.dart';
 import 'package:trackcreditapp/utilities/constans/exceptions/exceptions.dart';
 import 'package:trackcreditapp/utilities/constans/exceptions/firebase_exceptions.dart';
 import 'package:trackcreditapp/utilities/constans/exceptions/platform_exceptions.dart';
@@ -10,18 +11,19 @@ class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
   final _auth = FirebaseAuth.instance;
 
-  // @override
-  // void onInit() {
-  //   super.onInit();
-  // }
+  @override
+  void onInit() {
+    screenRedirect();
+    super.onInit();
+  }
 
-  // screenRedirect() {
-  //   if (_auth.currentUser != null) {
-  //     Get.offAll(() => const HomePage());
-  //   } else {
-  //     Get.offAll(() => const LoginPage());
-  //   }
-  // }
+  screenRedirect() {
+    if (_auth.currentUser != null) {
+      Get.offAll(() => const HomePage());
+    } else {
+      Get.offAll(() => const LoginPage());
+    }
+  }
 
   Future<UserCredential> registerWithEmailAndPassword(
       String email, String password) async {

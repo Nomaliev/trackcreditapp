@@ -6,7 +6,7 @@ import 'package:trackcreditapp/app.dart';
 import 'package:trackcreditapp/data/repositories/authentication_repository.dart';
 import 'package:trackcreditapp/firebase_options.dart';
 
-Future<void> main() async {
+void main() async {
   runApp(const MyApp());
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)

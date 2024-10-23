@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:trackcreditapp/data/repositories/authentication_repository.dart';
 import 'package:trackcreditapp/features/task/addcredit.dart';
 import 'package:trackcreditapp/utilities/constans/colors.dart';
 import 'package:trackcreditapp/utilities/constans/helpers/helper_functions.dart';
@@ -48,7 +49,11 @@ class HomePage extends StatelessWidget {
                       children: [
                         Text(document['Name']),
                         Text(document['Size']),
-                        Text(document['Date'])
+                        Text(document['Date']),
+                        ElevatedButton(
+                            onPressed: () =>
+                                AuthenticationRepository.instance.logOut(),
+                            child: const Text('log out'))
                       ],
                     ),
                   ),
