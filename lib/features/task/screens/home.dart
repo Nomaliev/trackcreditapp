@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:trackcreditapp/data/repositories/authentication_repository.dart';
 import 'package:trackcreditapp/features/task/addcredit.dart';
 import 'package:trackcreditapp/utilities/constans/colors.dart';
 import 'package:trackcreditapp/utilities/constans/helpers/helper_functions.dart';
@@ -25,40 +24,86 @@ class HomePage extends StatelessWidget {
         ),
       ),
       appBar: AppBar(
-        title: Text(
-          'Satışlar',
-          style: Theme.of(context).textTheme.headlineMedium,
+        title: Center(
+          child: Text(
+            'Satışlar',
+            style: Theme.of(context).textTheme.headlineMedium,
+          ),
         ),
       ),
       body: StreamBuilder(
         stream: fetchedData.snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasData) {
-            return ListView.builder(
-              itemCount: snapshot.data!.docs.length,
-              itemBuilder: (context, index) {
-                final document = snapshot.data!.docs[index];
-                return Padding(
-                  padding: const EdgeInsets.all(AppSizes.fieldSpace),
-                  child: Container(
-                    padding: const EdgeInsets.all(AppSizes.fieldSpace),
-                    decoration: const BoxDecoration(
-                        color: Colors.blue,
-                        borderRadius: BorderRadius.all(Radius.circular(20))),
-                    child: Column(
-                      children: [
-                        Text(document['Name']),
-                        Text(document['Size']),
-                        Text(document['Date']),
-                        ElevatedButton(
-                            onPressed: () =>
-                                AuthenticationRepository.instance.logOut(),
-                            child: const Text('log out'))
-                      ],
+            return Padding(
+              padding: const EdgeInsets.all(AppSizes.defaultPadding),
+              child: ListView.builder(
+                itemCount: snapshot.data!.docs.length,
+                itemBuilder: (context, index) {
+                  final document = snapshot.data!.docs[index];
+                  return Card(
+                    color: isDark
+                        ? AppColors.darkContainer
+                        : AppColors.lightContainer,
+                    margin: const EdgeInsets.all(AppSizes.inputSize),
+                    child: Padding(
+                      padding: const EdgeInsets.all(AppSizes.fieldSpace),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Text('Parça : ',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineSmall),
+                              SizedBox(
+                                width: 270,
+                                child: Text(document['Name'],
+                                    maxLines: 1,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleSmall!
+                                        .apply(
+                                          overflow: TextOverflow.ellipsis,
+                                        )),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: AppSizes.inputSize / 4),
+                          Row(
+                            children: [
+                              Text('Ölçü : ',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineSmall),
+                              SizedBox(
+                                width: 270,
+                                child: Text(document['Size'],
+                                    style:
+                                        Theme.of(context).textTheme.bodyMedium),
+                              ),
+                            ],
+                          ),
+                          Divider(
+                              color: isDark
+                                  ? AppColors.darkDivider
+                                  : AppColors.lightDivider),
+                          Row(
+                            children: [
+                              Text('Tarix : ',
+                                  style:
+                                      Theme.of(context).textTheme.titleMedium),
+                              Text(document['Date'],
+                                  style: Theme.of(context).textTheme.bodySmall),
+                            ],
+                          )
+                        ],
+                      ),
                     ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             );
           }
           return const Center(child: CircularProgressIndicator.adaptive());

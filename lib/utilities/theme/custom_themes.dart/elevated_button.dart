@@ -10,10 +10,10 @@ class AppElevatedButtonTheme {
     backgroundColor: Colors.blue,
     disabledForegroundColor: Colors.grey,
     disabledBackgroundColor: Colors.grey,
-    padding: const EdgeInsets.symmetric(vertical: 18),
+    padding: const EdgeInsets.symmetric(vertical: 24),
     textStyle: const TextStyle(
         fontSize: 16, color: Colors.white, fontWeight: FontWeight.w600),
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
   ));
 
   //Dark Theme
@@ -24,9 +24,9 @@ class AppElevatedButtonTheme {
     backgroundColor: Colors.blue,
     disabledForegroundColor: Colors.grey,
     disabledBackgroundColor: Colors.grey,
-    padding: const EdgeInsets.symmetric(vertical: 18),
+    padding: const EdgeInsets.symmetric(vertical: 24),
     textStyle: const TextStyle(
         fontSize: 16, color: Colors.white, fontWeight: FontWeight.w600),
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
   ));
 }
