@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:trackcreditapp/features/task/addcredit.dart';
+import 'package:trackcreditapp/features/task/screens/addcredit.dart';
 import 'package:trackcreditapp/utilities/constans/colors.dart';
 import 'package:trackcreditapp/utilities/constans/helpers/helper_functions.dart';
 import 'package:trackcreditapp/utilities/constans/sizes.dart';
@@ -12,12 +12,14 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final fetchedData = FirebaseFirestore.instance.collection('Products');
+    final fetchedData = FirebaseFirestore.instance
+        .collection('Products')
+        .orderBy('Date', descending: true);
     final isDark = AppHelperFunctions.isDarkMode(context);
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Get.offAll(() => const Addcredit()),
+        onPressed: () => Get.offAll(() => const AddCredit()),
         child: Icon(
           Iconsax.add,
           color: isDark ? AppColors.white : AppColors.black,

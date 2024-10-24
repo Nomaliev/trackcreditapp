@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:trackcreditapp/data/repositories/product_repository.dart';
 import 'package:trackcreditapp/features/task/models/product_model.dart';
-import 'package:trackcreditapp/features/task/screens/home.dart';
+import 'package:trackcreditapp/features/task/screens/home/home.dart';
 import 'package:trackcreditapp/utilities/constans/helpers/network_manager.dart';
 import 'package:trackcreditapp/utilities/constans/snackbars.dart';
 

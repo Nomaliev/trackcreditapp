@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:trackcreditapp/features/authentication/screens/loginpage/login_page.dart';
-import 'package:trackcreditapp/features/task/screens/home.dart';
+import 'package:trackcreditapp/features/task/screens/home/home.dart';
 import 'package:trackcreditapp/utilities/constans/exceptions/exceptions.dart';
 import 'package:trackcreditapp/utilities/constans/exceptions/firebase_exceptions.dart';
 import 'package:trackcreditapp/utilities/constans/exceptions/platform_exceptions.dart';
@@ -17,7 +17,7 @@ class AuthenticationRepository extends GetxController {
     super.onInit();
   }
 
-  screenRedirect() {
+  screenRedirect() async {
     if (_auth.currentUser != null) {
       Get.offAll(() => const HomePage());
     } else {
