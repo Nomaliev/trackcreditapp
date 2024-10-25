@@ -17,10 +17,8 @@ class HomePage extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         onPressed: () => Get.offAll(() => const AddCredit()),
-        child: Icon(
-          Iconsax.add,
-          color: isDark ? AppColors.white : AppColors.black,
-        ),
+        child: Icon(Iconsax.add,
+            color: isDark ? AppColors.black : AppColors.white),
       ),
       appBar: AppBar(
         leading: IconButton(
