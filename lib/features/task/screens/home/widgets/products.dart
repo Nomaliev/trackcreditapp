@@ -5,6 +5,7 @@ import 'package:trackcreditapp/features/task/controllers/product_controller.dart
 import 'package:trackcreditapp/utilities/constans/colors.dart';
 import 'package:trackcreditapp/utilities/constans/helpers/helper_functions.dart';
 import 'package:trackcreditapp/utilities/constans/sizes.dart';
+import 'package:trackcreditapp/utilities/constans/strings.dart';
 
 class Products extends StatelessWidget {
   const Products({super.key});
@@ -35,7 +36,7 @@ class Products extends StatelessWidget {
                       children: [
                         Row(
                           children: [
-                            Text('Parça : ',
+                            Text('${AppStrings.textile} : ',
                                 style:
                                     Theme.of(context).textTheme.headlineSmall),
                             SizedBox(
@@ -69,7 +70,7 @@ class Products extends StatelessWidget {
                         const SizedBox(height: AppSizes.inputSize / 4),
                         Row(
                           children: [
-                            Text('Ölçü : ',
+                            Text('${AppStrings.size} : ',
                                 style:
                                     Theme.of(context).textTheme.headlineSmall),
                             SizedBox(
@@ -86,12 +87,12 @@ class Products extends StatelessWidget {
                                 : AppColors.lightDivider),
                         Row(
                           children: [
-                            Text('Tarix : ',
+                            Text('${AppStrings.date} : ',
                                 style: Theme.of(context).textTheme.titleMedium),
                             Text(document['Date'],
                                 style: Theme.of(context).textTheme.bodySmall),
                           ],
-                        )
+                        ),
                       ],
                     ),
                   ),

@@ -10,5 +10,5 @@ class AppColors {
   static const darkDivider = Color(0xff787878);
   static const lightDivider = Color(0xffAEAEAE);
   static const lightFloatingActionButton = Color(0xff464646);
-  static const darkFloatingActionButton = Color(0xffA2A2A2);
+  static const darkFloatingActionButton = Color(0xffDCDCDC);
 }

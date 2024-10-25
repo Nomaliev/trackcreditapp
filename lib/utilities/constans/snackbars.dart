@@ -31,21 +31,21 @@ class AppSnackbars {
     return ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
       content: Row(
         children: [
-          const Icon(Iconsax.warning_2),
+          const Icon(Iconsax.warning_2, color: Colors.orange),
           const SizedBox(width: AppSizes.fieldSpace),
           Text(
             warning,
             style: Theme.of(Get.context!)
                 .textTheme
                 .bodyMedium!
-                .apply(color: AppColors.white),
+                .apply(color: AppColors.black),
           ),
         ],
       ),
       duration: const Duration(seconds: 2),
       width: 300,
       behavior: SnackBarBehavior.floating,
-      backgroundColor: Colors.orange,
+      backgroundColor: AppColors.white,
       elevation: 0,
     ));
   }

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:trackcreditapp/features/task/controllers/add_credit_controller.dart';
 import 'package:trackcreditapp/features/task/screens/home/home.dart';
+import 'package:trackcreditapp/utilities/constans/colors.dart';
+import 'package:trackcreditapp/utilities/constans/helpers/helper_functions.dart';
 import 'package:trackcreditapp/utilities/constans/sizes.dart';
 import 'package:trackcreditapp/utilities/constans/strings.dart';
 import 'package:trackcreditapp/utilities/constans/validation.dart';
@@ -12,6 +14,7 @@ class AddCredit extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = AppHelperFunctions.isDarkMode(context);
     final controller = Get.put(AddCreditController());
     return Scaffold(
       appBar: CustomAppBar(
@@ -43,7 +46,14 @@ class AddCredit extends StatelessWidget {
                     width: double.infinity,
                     child: ElevatedButton(
                         onPressed: () => controller.saveProductData(),
-                        child: const Text(AppStrings.rememberMe)),
+                        child: Text(AppStrings.rememberMe,
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge!
+                                .apply(
+                                    color: isDark
+                                        ? AppColors.black
+                                        : AppColors.white))),
                   )
                 ],
               )),

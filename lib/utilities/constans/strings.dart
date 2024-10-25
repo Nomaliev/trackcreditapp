@@ -9,4 +9,7 @@ class AppStrings {
   static const String createAccount = 'Hesab Yarat';
   static const String signUp = 'Qeydiyyatdan Keç';
   static const String alreadyHaveAccount = 'Hesabınız var?';
+  static const String textile = 'Parça';
+  static const String size = 'Ölçü';
+  static const String date = 'Tarix';
 }

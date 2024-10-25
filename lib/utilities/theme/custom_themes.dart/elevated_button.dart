@@ -5,9 +5,8 @@ class AppElevatedButtonTheme {
   //Light Theme
   static final lightElevatedButtonTheme = ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-    elevation: 0,
     foregroundColor: Colors.white,
-    backgroundColor: Colors.blue,
+    backgroundColor: const Color(0xff464646),
     disabledForegroundColor: Colors.grey,
     disabledBackgroundColor: Colors.grey,
     padding: const EdgeInsets.symmetric(vertical: 24),
@@ -21,7 +20,7 @@ class AppElevatedButtonTheme {
       style: ElevatedButton.styleFrom(
     elevation: 0,
     foregroundColor: Colors.white,
-    backgroundColor: Colors.blue,
+    backgroundColor: const Color(0xffE6E6E6),
     disabledForegroundColor: Colors.grey,
     disabledBackgroundColor: Colors.grey,
     padding: const EdgeInsets.symmetric(vertical: 24),
