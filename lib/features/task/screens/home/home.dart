@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:trackcreditapp/data/repositories/authentication_repository.dart';
+import 'package:trackcreditapp/data/repositories/product_repository.dart';
 import 'package:trackcreditapp/features/task/screens/addcredit.dart';
 import 'package:trackcreditapp/utilities/constans/colors.dart';
 import 'package:trackcreditapp/utilities/constans/helpers/helper_functions.dart';
@@ -12,6 +14,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final productRepo = Get.put(ProductRepository());
     final fetchedData = FirebaseFirestore.instance
         .collection('Products')
         .orderBy('Date', descending: true);
@@ -26,11 +29,12 @@ class HomePage extends StatelessWidget {
         ),
       ),
       appBar: AppBar(
-        title: Center(
-          child: Text(
-            'Satışlar',
-            style: Theme.of(context).textTheme.headlineMedium,
-          ),
+        leading: IconButton(
+            onPressed: () => AuthenticationRepository.instance.logOut(),
+            icon: const Icon(Iconsax.setting)),
+        title: Text(
+          'Satışlar',
+          style: Theme.of(context).textTheme.headlineMedium,
         ),
       ),
       body: StreamBuilder(
@@ -61,14 +65,29 @@ class HomePage extends StatelessWidget {
                                       .headlineSmall),
                               SizedBox(
                                 width: 270,
-                                child: Text(document['Name'],
-                                    maxLines: 1,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .titleSmall!
-                                        .apply(
-                                          overflow: TextOverflow.ellipsis,
-                                        )),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    SizedBox(
+                                      width: 220,
+                                      child: Text(document['Name'],
+                                          maxLines: 1,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleSmall!
+                                              .apply(
+                                                overflow: TextOverflow.ellipsis,
+                                              )),
+                                    ),
+                                    IconButton(
+                                        onPressed: () {
+                                          productRepo.removeProduct(index);
+                                        },
+                                        icon: const Icon(Icons.delete,
+                                            color: Colors.red))
+                                  ],
+                                ),
                               ),
                             ],
                           ),
