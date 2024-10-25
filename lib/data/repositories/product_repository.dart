@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -32,26 +30,26 @@ class ProductRepository extends GetxController {
     }
   }
 
-  Future<ProductModel> fetchProductData() async {
-    try {
-      CollectionReference productRef = _db.collection('Products');
-      final snapshots = await productRef.doc().get();
-      if (snapshots.exists) {
-        return ProductModel.fromJson(
-            snapshots as DocumentSnapshot<Map<String, dynamic>>);
-      } else {
-        return ProductModel.empty();
-      }
-    } on FirebaseException catch (e) {
-      throw AppFirebaseException(e.code).message;
-    } on FormatException catch (_) {
-      throw const FormatException();
-    } on PlatformException catch (e) {
-      throw AppPlatformException(e.code).message;
-    } catch (e) {
-      throw 'Something went wrong. Please try again';
-    }
-  }
+  // Future<ProductModel> fetchProductData() async {
+  //   try {
+  //     CollectionReference productRef = _db.collection('Products');
+  //     final snapshots = await productRef.doc().get();
+  //     if (snapshots.exists) {
+  //       return ProductModel.fromJson(
+  //           snapshots as DocumentSnapshot<Map<String, dynamic>>);
+  //     } else {
+  //       return ProductModel.empty();
+  //     }
+  //   } on FirebaseException catch (e) {
+  //     throw AppFirebaseException(e.code).message;
+  //   } on FormatException catch (_) {
+  //     throw const FormatException();
+  //   } on PlatformException catch (e) {
+  //     throw AppPlatformException(e.code).message;
+  //   } catch (e) {
+  //     throw 'Something went wrong. Please try again';
+  //   }
+  // }
 
   Future<void> removeProduct(int index) async {
     try {

@@ -57,4 +57,45 @@ class AppSnackbars {
             child: CircularProgressIndicator.adaptive(
                 backgroundColor: AppColors.white)));
   }
+
+  static defaultDialog({
+    required BuildContext context,
+    String title = 'Təsdiqlə',
+    String content = 'Bu məlumatı silmək istədiyinizə əminsiniz ?',
+    String cancelText = 'İmtina',
+    String confirmText = 'Sil',
+    Function()? onCancel,
+    Function()? onConfirm,
+  }) {
+    // Show a confirmation dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          contentPadding: const EdgeInsets.all(AppSizes.defaultPadding),
+          title: Text(title),
+          content: Text(content),
+          actions: <Widget>[
+            TextButton(
+              onPressed: onCancel ?? () => Get.back(),
+              child: Text(cancelText,
+                  style: Theme.of(context)
+                      .textTheme
+                      .labelMedium!
+                      .apply(color: AppColors.white)),
+            ),
+            TextButton(
+              style: TextButton.styleFrom(backgroundColor: Colors.red),
+              onPressed: onConfirm,
+              child: Text(confirmText,
+                  style: Theme.of(context)
+                      .textTheme
+                      .labelMedium!
+                      .apply(color: AppColors.white)),
+            ),
+          ],
+        );
+      },
+    );
+  }
 }
