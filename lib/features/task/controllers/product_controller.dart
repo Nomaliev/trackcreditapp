@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:trackcreditapp/data/repositories/product_repository.dart';
+import 'package:trackcreditapp/utilities/constans/helpers/network_manager.dart';
 import 'package:trackcreditapp/utilities/constans/snackbars.dart';
 
 class ProductController extends GetxController {
@@ -12,13 +13,17 @@ class ProductController extends GetxController {
 
   Future<void> removeProduct(int index) async {
     try {
+      final isConnected = await NetworkManager.instance.isConnected();
+      if (!isConnected) {
+        AppSnackbars.warningSnackbar(warning: 'İnternetiniz Yoxdur');
+        Get.back();
+        return;
+      }
       AppSnackbars.defaultDialog(
         context: Get.context!,
         onConfirm: () async {
-          AppSnackbars.loadingIndicator();
+          Get.back();
           await productRepo.removeProduct(index);
-          Get.back();
-          Get.back();
         },
       );
     } catch (e) {

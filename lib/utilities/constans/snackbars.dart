@@ -77,6 +77,8 @@ class AppSnackbars {
           content: Text(content),
           actions: <Widget>[
             TextButton(
+              style: TextButton.styleFrom(
+                  backgroundColor: const Color.fromARGB(255, 70, 70, 70)),
               onPressed: onCancel ?? () => Get.back(),
               child: Text(cancelText,
                   style: Theme.of(context)
