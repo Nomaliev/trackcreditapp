@@ -10,6 +10,8 @@ class ProductController extends GetxController {
   final fetchedData = FirebaseFirestore.instance
       .collection('Products')
       .orderBy('Date', descending: true);
+  final isEditTapped = false.obs;
+  int currentIndex = 0;
 
   Future<void> removeProduct(int index) async {
     try {

@@ -42,22 +42,42 @@ class Products extends StatelessWidget {
                                     Theme.of(context).textTheme.headlineSmall),
                             Expanded(
                               child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Expanded(
-                                    child: Text(document['Name'],
-                                        maxLines: 1,
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .titleSmall!
-                                            .apply(
-                                              overflow: TextOverflow.ellipsis,
-                                            )),
+                                  Obx(
+                                    () => Expanded(
+                                      child: controller.isEditTapped.value &&
+                                              controller.currentIndex == index
+                                          ? SizedBox(
+                                              height: 40,
+                                              child: TextField(
+                                                decoration: InputDecoration(
+                                                    suffixIcon: IconButton(
+                                                        onPressed: () {},
+                                                        icon: const Icon(
+                                                          Icons.done,
+                                                          color: Colors.green,
+                                                        )),
+                                                    contentPadding:
+                                                        EdgeInsets.zero),
+                                              ),
+                                            )
+                                          : Text(document['Name'],
+                                              maxLines: 2,
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .titleSmall!
+                                                  .apply(
+                                                      overflow: TextOverflow
+                                                          .ellipsis)),
+                                    ),
                                   ),
                                   IconButton(
-                                      onPressed: () {},
-                                      icon: Icon(Iconsax.edit)),
+                                      onPressed: () {
+                                        controller.currentIndex = index;
+                                        controller.isEditTapped.value =
+                                            !controller.isEditTapped.value;
+                                      },
+                                      icon: const Icon(Iconsax.edit)),
                                   IconButton(
                                       onPressed: () {
                                         controller.removeProduct(index);
