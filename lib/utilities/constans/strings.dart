@@ -12,4 +12,5 @@ class AppStrings {
   static const String textile = 'Parça';
   static const String size = 'Ölçü';
   static const String date = 'Tarix';
+  static const String sales = 'Satışlar';
 }

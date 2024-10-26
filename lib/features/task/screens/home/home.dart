@@ -6,6 +6,7 @@ import 'package:trackcreditapp/features/task/screens/addcredit.dart';
 import 'package:trackcreditapp/features/task/screens/home/widgets/products.dart';
 import 'package:trackcreditapp/utilities/constans/colors.dart';
 import 'package:trackcreditapp/utilities/constans/helpers/helper_functions.dart';
+import 'package:trackcreditapp/utilities/constans/strings.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -25,7 +26,7 @@ class HomePage extends StatelessWidget {
             onPressed: () => AuthenticationRepository.instance.logOut(),
             icon: const Icon(Iconsax.setting)),
         title: Text(
-          'Satışlar',
+          AppStrings.sales,
           style: Theme.of(context).textTheme.headlineMedium,
         ),
       ),

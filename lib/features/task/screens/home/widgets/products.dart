@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:trackcreditapp/features/task/controllers/product_controller.dart';
 import 'package:trackcreditapp/utilities/constans/colors.dart';
 import 'package:trackcreditapp/utilities/constans/helpers/helper_functions.dart';
@@ -39,14 +40,12 @@ class Products extends StatelessWidget {
                             Text('${AppStrings.textile} : ',
                                 style:
                                     Theme.of(context).textTheme.headlineSmall),
-                            SizedBox(
-                              width: 270,
+                            Expanded(
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  SizedBox(
-                                    width: 220,
+                                  Expanded(
                                     child: Text(document['Name'],
                                         maxLines: 1,
                                         style: Theme.of(context)
@@ -56,6 +55,9 @@ class Products extends StatelessWidget {
                                               overflow: TextOverflow.ellipsis,
                                             )),
                                   ),
+                                  IconButton(
+                                      onPressed: () {},
+                                      icon: Icon(Iconsax.edit)),
                                   IconButton(
                                       onPressed: () {
                                         controller.removeProduct(index);
@@ -73,8 +75,7 @@ class Products extends StatelessWidget {
                             Text('${AppStrings.size} : ',
                                 style:
                                     Theme.of(context).textTheme.headlineSmall),
-                            SizedBox(
-                              width: 270,
+                            Expanded(
                               child: Text(document['Size'],
                                   style:
                                       Theme.of(context).textTheme.bodyMedium),
