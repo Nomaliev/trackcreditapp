@@ -7,6 +7,7 @@ import 'package:trackcreditapp/utilities/constans/colors.dart';
 import 'package:trackcreditapp/utilities/constans/helpers/helper_functions.dart';
 import 'package:trackcreditapp/utilities/constans/sizes.dart';
 import 'package:trackcreditapp/utilities/constans/strings.dart';
+import 'package:trackcreditapp/utilities/constans/validation.dart';
 
 class Products extends StatelessWidget {
   const Products({super.key});
@@ -49,9 +50,15 @@ class Products extends StatelessWidget {
                                                 index
                                             ? SizedBox(
                                                 height: 40,
-                                                child: TextField(
+                                                child: TextFormField(
                                                   controller:
                                                       controller.fieldText,
+                                                  validator: (value) =>
+                                                      AppValidator
+                                                          .validateEmptyField(
+                                                              AppStrings
+                                                                  .textile,
+                                                              value),
                                                   decoration: InputDecoration(
                                                       floatingLabelBehavior:
                                                           FloatingLabelBehavior
@@ -59,19 +66,28 @@ class Products extends StatelessWidget {
                                                       label: Text(
                                                           document['Name'],
                                                           maxLines: 1,
-                                                          style: Theme.of(context)
-                                                              .textTheme
-                                                              .titleSmall),
+                                                          style:
+                                                              Theme.of(context)
+                                                                  .textTheme
+                                                                  .titleSmall),
                                                       suffixIcon: IconButton(
-                                                          onPressed: () => controller
-                                                                  .currentIndex
-                                                                  .value =
-                                                              AppSizes.infinite,
+                                                          onPressed: () {
+                                                            controller
+                                                                    .currentIndex
+                                                                    .value =
+                                                                AppSizes
+                                                                    .infinite;
+                                                            controller
+                                                                .updateProduct(
+                                                                    index);
+                                                          },
                                                           icon: const Icon(
                                                               Icons.done,
-                                                              color:
-                                                                  Colors.green)),
-                                                      contentPadding: const EdgeInsets.all(10)),
+                                                              color: Colors
+                                                                  .green)),
+                                                      contentPadding:
+                                                          const EdgeInsets.all(
+                                                              10)),
                                                 ),
                                               )
                                             : Text(document['Name'],

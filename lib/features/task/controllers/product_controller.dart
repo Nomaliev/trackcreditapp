@@ -35,4 +35,21 @@ class ProductController extends GetxController {
       Get.back();
     }
   }
+
+  Future<void> updateProduct(int index) async {
+    try {
+      final isConnected = await NetworkManager.instance.isConnected();
+      if (!isConnected) {
+        AppSnackbars.warningSnackbar(warning: 'İnternetiniz Yoxdur');
+        Get.back();
+        return;
+      }
+
+      Map<String, dynamic> json = {'Name': fieldText.text.trim()};
+      await productRepo.updateProduct(index, json);
+    } catch (e) {
+      AppSnackbars.errorSnackBar(error: e.toString());
+      Get.back();
+    }
+  }
 }

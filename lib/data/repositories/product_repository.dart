@@ -57,12 +57,32 @@ class ProductRepository extends GetxController {
           .collection('Products')
           .orderBy('Date', descending: true)
           .get();
-      final documents = snapshots.docs[index];
-      final documentId = documents.id;
+      final document = snapshots.docs[index];
+      final documentId = document.id;
       await FirebaseFirestore.instance
           .collection('Products')
           .doc(documentId)
           .delete();
+    } on FirebaseException catch (e) {
+      throw AppFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const FormatException();
+    } on PlatformException catch (e) {
+      throw AppPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
+
+  Future<void> updateProduct(int index, Map<String, dynamic> json) async {
+    try {
+      QuerySnapshot snapshots = await FirebaseFirestore.instance
+          .collection('Products')
+          .orderBy('Date', descending: true)
+          .get();
+      final document = snapshots.docs[index];
+      final documentId = document.id;
+      await _db.collection('Products').doc(documentId).update(json);
     } on FirebaseException catch (e) {
       throw AppFirebaseException(e.code).message;
     } on FormatException catch (_) {
