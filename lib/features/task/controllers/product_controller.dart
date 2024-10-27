@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:trackcreditapp/data/repositories/product_repository.dart';
 import 'package:trackcreditapp/utilities/constans/helpers/network_manager.dart';
@@ -10,8 +11,8 @@ class ProductController extends GetxController {
   final fetchedData = FirebaseFirestore.instance
       .collection('Products')
       .orderBy('Date', descending: true);
-  final isEditTapped = false.obs;
-  int currentIndex = 0;
+  Rx<int> currentIndex = 0.obs;
+  TextEditingController fieldText = TextEditingController();
 
   Future<void> removeProduct(int index) async {
     try {

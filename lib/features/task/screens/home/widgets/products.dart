@@ -45,18 +45,20 @@ class Products extends StatelessWidget {
                                 children: [
                                   Obx(
                                     () => Expanded(
-                                      child: controller.isEditTapped.value &&
-                                              controller.currentIndex == index
+                                      child: controller.currentIndex.value ==
+                                              index
                                           ? SizedBox(
                                               height: 40,
                                               child: TextField(
+                                                controller:
+                                                    controller.fieldText,
                                                 decoration: InputDecoration(
                                                     suffixIcon: IconButton(
                                                         onPressed: () {},
                                                         icon: const Icon(
-                                                          Icons.done,
-                                                          color: Colors.green,
-                                                        )),
+                                                            Icons.done,
+                                                            color:
+                                                                Colors.green)),
                                                     contentPadding:
                                                         EdgeInsets.zero),
                                               ),
@@ -73,9 +75,7 @@ class Products extends StatelessWidget {
                                   ),
                                   IconButton(
                                       onPressed: () {
-                                        controller.currentIndex = index;
-                                        controller.isEditTapped.value =
-                                            !controller.isEditTapped.value;
+                                        controller.currentIndex.value = index;
                                       },
                                       icon: const Icon(Iconsax.edit)),
                                   IconButton(
