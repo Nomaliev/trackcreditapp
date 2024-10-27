@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:trackcreditapp/data/repositories/product_repository.dart';
 import 'package:trackcreditapp/utilities/constans/helpers/network_manager.dart';
+import 'package:trackcreditapp/utilities/constans/sizes.dart';
 import 'package:trackcreditapp/utilities/constans/snackbars.dart';
 
 class ProductController extends GetxController {
@@ -11,7 +12,7 @@ class ProductController extends GetxController {
   final fetchedData = FirebaseFirestore.instance
       .collection('Products')
       .orderBy('Date', descending: true);
-  Rx<int> currentIndex = 0.obs;
+  Rx<int> currentIndex = AppSizes.infinite.obs;
   TextEditingController fieldText = TextEditingController();
 
   Future<void> removeProduct(int index) async {

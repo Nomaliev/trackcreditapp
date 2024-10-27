@@ -45,33 +45,43 @@ class Products extends StatelessWidget {
                                 children: [
                                   Obx(
                                     () => Expanded(
-                                      child: controller.currentIndex.value ==
-                                              index
-                                          ? SizedBox(
-                                              height: 40,
-                                              child: TextField(
-                                                controller:
-                                                    controller.fieldText,
-                                                decoration: InputDecoration(
-                                                    suffixIcon: IconButton(
-                                                        onPressed: () {},
-                                                        icon: const Icon(
-                                                            Icons.done,
-                                                            color:
-                                                                Colors.green)),
-                                                    contentPadding:
-                                                        EdgeInsets.zero),
-                                              ),
-                                            )
-                                          : Text(document['Name'],
-                                              maxLines: 2,
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .titleSmall!
-                                                  .apply(
-                                                      overflow: TextOverflow
-                                                          .ellipsis)),
-                                    ),
+                                        child: controller.currentIndex.value ==
+                                                index
+                                            ? SizedBox(
+                                                height: 40,
+                                                child: TextField(
+                                                  controller:
+                                                      controller.fieldText,
+                                                  decoration: InputDecoration(
+                                                      floatingLabelBehavior:
+                                                          FloatingLabelBehavior
+                                                              .never,
+                                                      label: Text(
+                                                          document['Name'],
+                                                          maxLines: 1,
+                                                          style: Theme.of(context)
+                                                              .textTheme
+                                                              .titleSmall),
+                                                      suffixIcon: IconButton(
+                                                          onPressed: () => controller
+                                                                  .currentIndex
+                                                                  .value =
+                                                              AppSizes.infinite,
+                                                          icon: const Icon(
+                                                              Icons.done,
+                                                              color:
+                                                                  Colors.green)),
+                                                      contentPadding: const EdgeInsets.all(10)),
+                                                ),
+                                              )
+                                            : Text(document['Name'],
+                                                maxLines: 2,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .titleSmall!
+                                                    .apply(
+                                                        overflow: TextOverflow
+                                                            .ellipsis))),
                                   ),
                                   IconButton(
                                       onPressed: () {
